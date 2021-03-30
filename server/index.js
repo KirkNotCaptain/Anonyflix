@@ -24,4 +24,15 @@ wsServer.on('request', (request) => {
   console.log(
     `connected client ${clientId} in ${Object.getOwnPropertyNames(clients)}`
   );
+
+  connection.on('message', (message) => {
+    if (message.type === 'utf8') {
+      console.log('Received Message: ', message.utf8Data);
+    }
+
+    for (id in clients) {
+      clients[id].sendUTF(message.utf8Data);
+      console.log('sending message to: ', clients[id]);
+    }
+  });
 });
