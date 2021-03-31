@@ -1,7 +1,8 @@
-html {
-  background-color: #282c34;
-  color: white;
+body {
+  background-color: #282c34 !important;
+  color: white !important;
 }
+
 .App {
   text-align: center;
 }
@@ -86,4 +87,12 @@ h4 {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.MuiFormLabel-root {
+  color: white !important;
+}
+
+.MuiInputBase-input {
+  color: white !important;
 }

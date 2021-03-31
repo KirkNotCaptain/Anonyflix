@@ -9,6 +9,8 @@ const MovieContext = createContext({
   selectedMovies: [],
   setSelectedMovies: () => {},
   updateSharedMovies: () => {},
+  userName: '',
+  userId: 0,
 });
 
 export default MovieContext;

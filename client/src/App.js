@@ -6,10 +6,10 @@ import {
 } from './fetch-requests/fetch.js';
 import { useEffect, useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
-import { Button, Input } from '@material-ui/core';
 import ChoicesContainer from './components/choices-container.js';
 import MoviesContainer from './components/movies-container.js';
 import MovieContext from './context.js';
+import SignIn from './components/sign-in.js';
 
 const client = new W3CWebSocket('ws://127.0.0.1:8000');
 
@@ -21,9 +21,10 @@ function App() {
   const [selectedMovies, setSelectedMovies] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUsername] = useState('anonymous');
+  const [userId] = useState(Math.floor(Math.random() * 10000));
 
   var updateSharedMovies = (movie) => {
-    console.log('updating movie');
+    console.log('updating movie', movie);
     client.send(JSON.stringify(movie));
   };
 
@@ -49,7 +50,7 @@ function App() {
     });
 
     client.onmessage = (movie) => {
-      // console.log('message from websocket: ', JSON.parse(movie.data));
+      console.log(movie);
       setSelectedMovies([...selectedMovies, JSON.parse(movie.data)]);
     };
   }, [selectedMovies]);
@@ -63,27 +64,7 @@ function App() {
   };
 
   if (!isLoggedIn) {
-    return (
-      <div className="App">
-        <form className="login-form">
-          <Input
-            labelText="Username"
-            id="username"
-            formControlProps={{ fullWidth: true }}
-            onChange={handleUsername}
-            type="text"
-          />
-          <Button
-            type="button"
-            color="primary"
-            className="login-button"
-            onClick={handleLogin}
-          >
-            Log in
-          </Button>
-        </form>
-      </div>
-    );
+    return <SignIn handleLogin={handleLogin} handleUsername={handleUsername} />;
   } else {
     return (
       <MovieContext.Provider
@@ -96,6 +77,8 @@ function App() {
           selectedMovies,
           setSelectedMovies,
           updateSharedMovies,
+          userName,
+          userId,
         }}
       >
         <div className="App">

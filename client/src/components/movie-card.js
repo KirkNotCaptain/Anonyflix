@@ -9,9 +9,12 @@ var MovieCard = ({ movie }) => {
   // console.log('shared movies: ', context.selectedMovies);
 
   var handleSelection = (movie) => {
-    console.warn(movie);
+    // console.warn(movie);
     if (!isClicked) {
-      context.updateSharedMovies(movie);
+      console.log(context.userId);
+      var movieWithUserName = Object.assign({ userid: context.userId }, movie);
+      // context.updateSharedMovies(movie);
+      context.updateSharedMovies(movieWithUserName);
       setIsClicked(true);
     }
   };
