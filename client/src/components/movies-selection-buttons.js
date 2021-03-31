@@ -4,7 +4,7 @@ import MovieContext from '../context.js';
 
 var MovieSelectionButtons = () => {
   const context = useContext(MovieContext);
-  console.log('top rated movies: ', context.topRatedMovies);
+  // console.log('top rated movies: ', context.topRatedMovies);
 
   var handleButtonSelection = (selectionType) => {
     if (selectionType === 'nowPlaying') {

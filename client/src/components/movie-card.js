@@ -12,23 +12,42 @@ var MovieCard = ({ movie }) => {
     // console.warn(movie);
     if (!isClicked) {
       console.log(context.userId);
-      var movieWithUserName = Object.assign({ userid: context.userId }, movie);
+      var movieWithUserName = Object.assign({ userId: context.userId }, movie);
       // context.updateSharedMovies(movie);
       context.updateSharedMovies(movieWithUserName);
       setIsClicked(true);
     }
   };
 
+  // var handleRemoveSelection = (currentMovie) => {
+  //   console.warn(movie);
+  //   var cp = context.selectedMovies.slice();
+  //   var newList = cp.filter((movie) => {
+  //     if (currentMovie.id !== movie.id) {
+  //       return movie;
+  //     }
+  //   });
+  //   context.setSelectedMovies(newList);
+  //   setIsClicked(false);
+  // };
+
   var handleRemoveSelection = (currentMovie) => {
-    console.warn(movie);
+    // console.log('MOVIE CONTEXT: ', context.selectedMovies);
+    currentMovie = Object.assign({ userId: context.userId }, currentMovie);
     var cp = context.selectedMovies.slice();
-    var newList = cp.filter((movie) => {
-      if (currentMovie.id !== movie.id) {
-        return movie;
+    for (var i = 0; i < cp.length; i++) {
+      if (currentMovie.id === cp[i].id) {
+        console.log('match');
+        // console.log(currentMovie, cp[i]);
+        if (context.userId === cp[i].userId) {
+          console.log('id match');
+          delete cp[i];
+          var deleteMovie = { delete: currentMovie };
+          context.updateSharedMovies(deleteMovie);
+          setIsClicked(false);
+        }
       }
-    });
-    context.setSelectedMovies(newList);
-    setIsClicked(false);
+    }
   };
 
   var displayButton = (isClicked) => {
