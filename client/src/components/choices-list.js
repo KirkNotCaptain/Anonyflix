@@ -1,19 +1,18 @@
 import '../App.css';
-import { useContext, useEffect } from 'react';
+import { useContext, useState } from 'react';
 import MovieContext from '../context.js';
-import MovieCard from './movie-card';
+import ChoicesCard from './choices-card';
 
 var ChoicesList = () => {
   const context = useContext(MovieContext);
-
-  useEffect(() => {}, [context.selectedMovies]);
+  // useEffect(() => {}, [context.selectedMovies]);
 
   const displayUserSelection = () => {
     if (context.selectedMovies.length) {
       return (
         <div className="choices-list">
           {context.selectedMovies.map((movie) => {
-            return <MovieCard movie={movie} />;
+            return <ChoicesCard movie={movie} key={movie.id} />;
           })}
         </div>
       );
