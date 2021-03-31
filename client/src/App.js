@@ -1,5 +1,9 @@
 import './App.css';
-import { getLatest } from './fetch-requests/fetch.js';
+import {
+  getPopular,
+  getNowPlaying,
+  getTopRated,
+} from './fetch-requests/fetch.js';
 import { useEffect, useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import { Button, Input } from '@material-ui/core';
@@ -10,7 +14,10 @@ import MovieContext from './context.js';
 const client = new W3CWebSocket('ws://127.0.0.1:8000');
 
 function App() {
+  const [currentlyDisplayedMovies, setCurrentlyDisplayedMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [selectedMovies, setSelectedMovies] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUsername] = useState('anonymous');
@@ -25,8 +32,17 @@ function App() {
       console.log('WebSocket Client Connected');
     };
 
-    getLatest().then((data) => {
+    getPopular().then((data) => {
       setPopularMovies(data.data.results);
+      setCurrentlyDisplayedMovies(data.data.results);
+    });
+
+    getNowPlaying().then((data) => {
+      setNowPlayingMovies(data.data.results);
+    });
+
+    getTopRated().then((data) => {
+      setTopRatedMovies(data.data.results);
     });
 
     client.onmessage = (movie) => {
@@ -69,7 +85,11 @@ function App() {
     return (
       <MovieContext.Provider
         value={{
+          currentlyDisplayedMovies,
+          setCurrentlyDisplayedMovies,
           popularMovies,
+          nowPlayingMovies,
+          topRatedMovies,
           selectedMovies,
           setSelectedMovies,
           updateSharedMovies,
