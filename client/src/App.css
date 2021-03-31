@@ -81,3 +81,9 @@ h4 {
 .minus-icon:hover {
   color: grey;
 }
+
+.button-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

@@ -4,21 +4,15 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import MovieContext from '../context.js';
 
-var MovieCard = ({ movie, maxSelections, setMaxSelections }) => {
+var MovieCard = ({ movie }) => {
   const context = useContext(MovieContext);
   const [isClicked, setIsClicked] = useState(false);
   // console.log('shared movies: ', context.selectedMovies);
 
   var handleSelection = (movie) => {
-    console.log('clicked!');
-    console.log(isClicked);
-    if (maxSelections > 0) {
-      if (!isClicked) {
-        context.updateSharedMovies(movie);
-        setIsClicked(true);
-      }
-    } else {
-      Window.alert('Only 5 Selections Allowed!');
+    if (!isClicked) {
+      context.updateSharedMovies(movie);
+      setIsClicked(true);
     }
   };
 
@@ -31,8 +25,6 @@ var MovieCard = ({ movie, maxSelections, setMaxSelections }) => {
     });
     context.setSelectedMovies(newList);
     setIsClicked(false);
-    // console.log(cp);
-    // console.warn(newList);
   };
 
   return (
