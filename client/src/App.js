@@ -34,7 +34,10 @@ function App() {
 
     getPopular().then((data) => {
       setPopularMovies(data.data.results);
-      setCurrentlyDisplayedMovies(data.data.results);
+      //this makes sure that upon re-render the currently displayed movies don't always change back to popular
+      if (!currentlyDisplayedMovies.length) {
+        setCurrentlyDisplayedMovies(data.data.results);
+      }
     });
 
     getNowPlaying().then((data) => {

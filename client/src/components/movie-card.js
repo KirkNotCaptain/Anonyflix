@@ -1,7 +1,5 @@
 import '../App.css';
 import { useContext, useState } from 'react';
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 import MovieContext from '../context.js';
 import { Button } from '@material-ui/core';
 
@@ -11,6 +9,7 @@ var MovieCard = ({ movie }) => {
   // console.log('shared movies: ', context.selectedMovies);
 
   var handleSelection = (movie) => {
+    console.warn(movie);
     if (!isClicked) {
       context.updateSharedMovies(movie);
       setIsClicked(true);
@@ -18,6 +17,7 @@ var MovieCard = ({ movie }) => {
   };
 
   var handleRemoveSelection = (currentMovie) => {
+    console.warn(movie);
     var cp = context.selectedMovies.slice();
     var newList = cp.filter((movie) => {
       if (currentMovie.id !== movie.id) {
