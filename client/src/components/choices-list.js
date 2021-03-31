@@ -1,11 +1,10 @@
 import '../App.css';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import MovieContext from '../context.js';
 import ChoicesCard from './choices-card';
 
 var ChoicesList = () => {
   const context = useContext(MovieContext);
-  // useEffect(() => {}, [context.selectedMovies]);
 
   const displayUserSelection = () => {
     if (context.selectedMovies.length) {

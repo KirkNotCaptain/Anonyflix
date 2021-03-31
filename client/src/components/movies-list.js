@@ -8,7 +8,7 @@ var MoviesList = () => {
 
   return (
     <div className="movies-list">
-      {context.popularMovies.map((movie) => {
+      {context.currentlyDisplayedMovies.map((movie) => {
         return <MovieCard movie={movie} key={movie.id} />;
       })}
     </div>
