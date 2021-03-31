@@ -5,6 +5,7 @@ import ChoicesCard from './choices-card';
 
 var ChoicesList = () => {
   const context = useContext(MovieContext);
+  // console.error('selected movies: ', context.selectedMovies);
 
   const displayUserSelection = () => {
     if (context.selectedMovies.length) {

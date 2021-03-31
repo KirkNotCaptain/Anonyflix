@@ -25,6 +25,7 @@ function App() {
 
   var updateSharedMovies = (movie) => {
     console.log('updating movie', movie);
+    // var movieWithUserName = Object.assign({ userId: userId }, movie);
     client.send(JSON.stringify(movie));
   };
 
@@ -49,9 +50,10 @@ function App() {
       setTopRatedMovies(data.data.results);
     });
 
-    client.onmessage = (movie) => {
-      console.log(movie);
-      setSelectedMovies([...selectedMovies, JSON.parse(movie.data)]);
+    client.onmessage = (selectedMovies) => {
+      console.warn('INCOMING MOVIE LIST: ', JSON.parse(selectedMovies.data));
+      // setSelectedMovies([...selectedMovies, JSON.parse(movie.data)]);
+      setSelectedMovies(JSON.parse(selectedMovies.data));
     };
   }, [selectedMovies]);
 
