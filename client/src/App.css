@@ -6,6 +6,12 @@ html {
   text-align: center;
 }
 
+h3,
+h4 {
+  margin: 0;
+  height: 15%;
+}
+
 .App-header {
   background-color: #282c34;
   display: flex;
@@ -53,9 +59,25 @@ html {
   height: 400px;
   border: 1px solid white;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-img {
   width: 200px;
   height: 70%;
+}
+
+.icons {
+  height: 10%;
+  position: relative;
+  top: -94%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.plus-icon:hover,
+.minus-icon:hover {
+  color: grey;
 }

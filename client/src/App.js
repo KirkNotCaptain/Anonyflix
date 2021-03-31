@@ -2,8 +2,6 @@ import './App.css';
 import { getLatest } from './fetch-requests/fetch.js';
 import { useEffect, useState } from 'react';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
-// import CustomInput from './components/CustomInput';
-// import Button from './components/Button';
 import { Button, Input } from '@material-ui/core';
 import ChoicesContainer from './components/choices-container.js';
 import MoviesContainer from './components/movies-container.js';
@@ -18,6 +16,7 @@ function App() {
   const [userName, setUsername] = useState('anonymous');
 
   var updateSharedMovies = (movie) => {
+    console.log('updating movie');
     client.send(JSON.stringify(movie));
   };
 
@@ -31,7 +30,7 @@ function App() {
     });
 
     client.onmessage = (movie) => {
-      console.log('message from websocket: ', JSON.parse(movie.data));
+      // console.log('message from websocket: ', JSON.parse(movie.data));
       setSelectedMovies([...selectedMovies, JSON.parse(movie.data)]);
     };
   }, [selectedMovies]);
