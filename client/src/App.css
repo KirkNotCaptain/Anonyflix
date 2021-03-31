@@ -68,14 +68,14 @@ h4 {
   height: 70%;
 }
 
-.icons {
+/* .icons {
   height: 10%;
   position: relative;
   top: -94%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
+} */
 
 .plus-icon:hover,
 .minus-icon:hover {
