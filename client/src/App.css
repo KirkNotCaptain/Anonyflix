@@ -7,12 +7,30 @@ body {
   text-align: center;
 }
 
+* {
+  font-family: 'New Tegomin', serif;
+}
+
 h3,
 h4 {
   margin: 0;
   height: 15%;
 }
 
+h3 {
+  font-size: 22px;
+}
+#header-logo {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+#main-page-logo {
+  height: 100px;
+  width: 100px;
+}
 .App-header {
   background-color: #282c34;
   display: flex;
@@ -38,9 +56,11 @@ h4 {
 
 .choices-container,
 .movies-container {
-  border: 1px solid white;
+  border-top: solid white;
+  border-bottom: solid white;
   width: 99%;
-  height: 500px;
+  height: 600px;
+  background-color: #24314d;
 }
 
 .movies-container {
@@ -64,8 +84,14 @@ h4 {
   flex-direction: column;
 }
 
+.movie-desc {
+  position: relative;
+  top: -300px;
+  border: 1px solid white;
+}
+
 .movie-img {
-  width: 200px;
+  width: 198px;
   height: 70%;
 }
 

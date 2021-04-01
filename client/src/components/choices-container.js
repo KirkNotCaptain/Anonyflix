@@ -5,7 +5,7 @@ var ChoicesContainer = () => {
   return (
     <>
       <div className="choices-container">
-        <h1 className="title">User Choices</h1>
+        <h1 className="title">All Anony-Choices</h1>
         <ChoicesList />
       </div>
     </>

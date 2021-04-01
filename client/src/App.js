@@ -10,6 +10,7 @@ import ChoicesContainer from './components/choices-container.js';
 import MoviesContainer from './components/movies-container.js';
 import MovieContext from './context.js';
 import SignIn from './components/sign-in.js';
+import AnimatedHeader from './components/animated-header.js';
 
 const client = new W3CWebSocket('ws://127.0.0.1:8000');
 
@@ -85,7 +86,12 @@ function App() {
       >
         <div className="App">
           <header className="App-header">
-            <h1>DemocraFlix</h1>
+            <img
+              id="main-page-logo"
+              alt="main-page-logo"
+              src="https://i.imgur.com/pnjMfEN.png"
+            />
+            <AnimatedHeader />
           </header>
           <ChoicesContainer />
           <MoviesContainer />
