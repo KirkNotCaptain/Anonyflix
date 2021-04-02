@@ -15,13 +15,13 @@ Important Note: This application is currently in development. This project uses 
 
 > Front End
 
-- [React](#https://reactjs.org/)
-- [Material UI](#https://material-ui.com/)
-- [React-Spring](#https://www.react-spring.io/)
+- [React](https://reactjs.org/)
+- [Material UI](https://material-ui.com/)
+- [React-Spring](https://www.react-spring.io/)
 
 > Back End
 
-- [Websocket](#https://www.npmjs.com/package/websocket)
+- [Websocket](https://www.npmjs.com/package/websocket)
 
 > API
 
