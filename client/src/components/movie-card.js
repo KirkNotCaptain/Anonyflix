@@ -52,7 +52,8 @@ var MovieCard = ({ movie }) => {
         <Button
           variant="contained"
           color="default"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             handleSelection(movie);
           }}
         >
@@ -75,34 +76,36 @@ var MovieCard = ({ movie }) => {
   };
 
   return (
-    <div
-      onClick={() => {
-        setFlipped(!flipped);
-      }}
-    >
-      <a.div
-        className="movie-card"
-        style={{ opacity: opacity.interpolate((o) => 1 - o), transform }}
-      >
-        <img
-          className="movie-img"
-          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-          alt={movie.original_title}
-        />
-        <h3>{movie.title}</h3>
-        <h4>Rating: {movie.vote_average}</h4>
-        <div className="icons">{displayButton(isClicked)}</div>
-      </a.div>
-      <a.div
-        className="movie-desc"
-        style={{
-          opacity,
-          transform: transform.interpolate((t) => `${t} rotateY(180deg)`),
+    <>
+      <div
+        onClick={() => {
+          setFlipped(!flipped);
         }}
       >
-        {movie.overview}
-      </a.div>
-    </div>
+        <a.div
+          className="movie-card"
+          style={{ opacity: opacity.interpolate((o) => 1 - o), transform }}
+        >
+          <img
+            className="movie-img"
+            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            alt={movie.original_title}
+          />
+          <h3>{movie.title}</h3>
+          <h4>Rating: {movie.vote_average}</h4>
+        </a.div>
+        <a.div
+          className="movie-desc"
+          style={{
+            opacity,
+            transform: transform.interpolate((t) => `${t} rotateY(180deg)`),
+          }}
+        >
+          {movie.overview}
+        </a.div>
+      </div>
+      <div className="icons">{displayButton(isClicked)}</div>
+    </>
   );
 };
 

@@ -89,7 +89,7 @@ function App() {
             <img
               id="main-page-logo"
               alt="main-page-logo"
-              src="https://i.imgur.com/pnjMfEN.png"
+              src="https://i.imgur.com/hOOcRlm.png"
             />
             <AnimatedHeader />
           </header>
