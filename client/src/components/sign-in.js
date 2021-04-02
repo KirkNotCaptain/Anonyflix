@@ -36,7 +36,7 @@ function SignIn({ handleLogin, handleUsername }) {
     <div>
       <img
         id="header-logo"
-        src="https://i.imgur.com/pnjMfEN.png"
+        src="https://i.imgur.com/hOOcRlm.png"
         alt="AnonyFlix header logo"
       />
       <Container component="main" maxWidth="xs">
